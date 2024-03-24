@@ -1,13 +1,11 @@
 import { User } from "../domain/User";
-import { AuthError, InvalidToken } from "../error/AuthError";
+import { AuthError } from "../error/AuthError";
 import { IUser } from "../ports/repository/UserRepository";
-import jwt from "jsonwebtoken";
 import { HPassService } from "./HashPassService";
 import { ITokenService } from "$core/ports/repository/TokenRepository";
+import { IAuth } from "$core/ports/repository/AuthRepository";
 
-type TVerifyToken = Error | string | jwt.JwtPayload;
-
-export class AuthService {
+export class AuthService implements IAuth {
   constructor(
     private readonly userRepository: IUser<User>,
     private readonly hashPassService: HPassService,

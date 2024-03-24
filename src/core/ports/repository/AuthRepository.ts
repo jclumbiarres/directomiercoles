@@ -1,4 +1,3 @@
-export interface IAuth<T> {
-  generateToken(user: T): Promise<string>;
-  verifyToken(token: string): Promise<T>;
+export interface IAuth {
+  login(email: string, password: string): Promise<string | Error>;
 }
