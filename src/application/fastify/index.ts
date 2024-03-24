@@ -10,6 +10,7 @@ import { TodoController } from "./controller/TodoController";
 import { TodoService } from "$core/service/TodoService";
 import { InMemoryTodoRepository } from "$adapters/repository/inMemory/InMemoryTodoRepository";
 import { OrmTodoRepository } from "$adapters/repository/orm/OrmTodoRepository";
+import { TokenService } from "$core/service/TokenService";
 //import "module-alias/register";
 dotenv.config();
 const server = fastify({
@@ -20,12 +21,13 @@ const server = fastify({
 
 // cifrado
 const hPassService = new HPassService();
+const tokenService = new TokenService();
 
 const userRepository = new InMemoryUserRepository();
 const userService = new UserService(userRepository, hPassService);
 const userController = new UserController(userService);
 
-const authService = new AuthService(userRepository, hPassService);
+const authService = new AuthService(userRepository, hPassService, tokenService);
 const loginController = new LoginController(authService);
 
 const todoRepository = new InMemoryTodoRepository();

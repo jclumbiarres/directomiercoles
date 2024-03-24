@@ -1,0 +1,1 @@
+type TVerifyToken = Error | string;
