@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { InvalidToken } from "../error/AuthError";
+import { InvalidToken } from "../../error/AuthError";
 import { User } from "$core/domain/User";
 import { ITokenService } from "$core/ports/repository/TokenRepository";
 

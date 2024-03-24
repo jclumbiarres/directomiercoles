@@ -2,16 +2,18 @@ import { fastify } from "fastify";
 import { InMemoryUserRepository } from "$adapters/repository/inMemory/InMemoryUserRepository";
 import { UserService } from "$core/service/UserService";
 import { UserController } from "./controller/UserController";
-import dotenv from "dotenv";
-import { AuthService } from "$core/service/AuthService";
+import { AuthService } from "$core/service/Auth/AuthService";
 import { LoginController } from "./controller/LoginController";
-import { HPassService } from "$core/service/HashPassService";
+import { HPassService } from "$core/service/Auth/HashPassService";
 import { TodoController } from "./controller/TodoController";
 import { TodoService } from "$core/service/TodoService";
-import { InMemoryTodoRepository } from "$adapters/repository/inMemory/InMemoryTodoRepository";
+//import { InMemoryTodoRepository } from "$adapters/repository/inMemory/InMemoryTodoRepository";
 import { OrmTodoRepository } from "$adapters/repository/orm/OrmTodoRepository";
-import { TokenService } from "$core/service/TokenService";
+import { TokenService } from "$core/service/Auth/TokenService";
+import dotenv from "dotenv";
+
 dotenv.config();
+
 const server = fastify({
   logger: true,
 });
@@ -29,7 +31,7 @@ const userController = new UserController(userService);
 const authService = new AuthService(userRepository, hPassService, tokenService);
 const loginController = new LoginController(authService);
 
-const todoRepository = new InMemoryTodoRepository();
+//const todoRepository = new InMemoryTodoRepository();
 const ormTodo = new OrmTodoRepository();
 
 const todoService = new TodoService(ormTodo);

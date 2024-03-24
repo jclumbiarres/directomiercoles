@@ -1,7 +1,7 @@
 import { User } from "../domain/User";
 import { IUser } from "../ports/repository/UserRepository";
 import { UserAlreadyExists } from "../error/UserError";
-import { HPassService } from "./HashPassService";
+import { HPassService } from "./Auth/HashPassService";
 
 export class UserService {
   private readonly userRepository: IUser<User>;

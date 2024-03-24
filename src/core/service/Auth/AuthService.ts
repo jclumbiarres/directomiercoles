@@ -1,6 +1,6 @@
-import { User } from "../domain/User";
-import { AuthError } from "../error/AuthError";
-import { IUser } from "../ports/repository/UserRepository";
+import { User } from "../../domain/User";
+import { AuthError } from "../../error/AuthError";
+import { IUser } from "../../ports/repository/UserRepository";
 import { HPassService } from "./HashPassService";
 import { ITokenService } from "$core/ports/repository/TokenRepository";
 import { IAuth } from "$core/ports/repository/AuthRepository";
