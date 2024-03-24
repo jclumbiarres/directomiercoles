@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma:init": "npx prisma migrate dev --schema src/adapters/repository/orm/schema.prisma --name \"inicio\"",
-    "bun:dev": "bun src/index.ts"
+    "bun:dev": "bun --watch src/index.ts",
+    "node:dev": "npx tsc && node dist/index.js"
   },
   "keywords": [],
   "author": "Juan Carlos Lumbiarres",
@@ -18,13 +19,21 @@
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
     "jsonwebtoken": "^9.0.2",
+    "module-alias": "^2.2.3",
     "prisma": "^5.11.0"
   },
   "devDependencies": {
+    "@ef-carbon/tspm": "^2.2.5",
     "@types/bcryptjs": "^2.4.6",
     "@types/jsonwebtoken": "^9.0.6",
     "@types/node": "^20.11.30",
     "bcryptjs": "^2.4.3",
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
+  },
+  "_moduleAliases": {
+    "$core": "src/core",
+    "$adapters": "src/adapters",
+    "$application": "src/application"
   }
 }

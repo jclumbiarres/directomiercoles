@@ -1,3 +1,4 @@
+import "module-alias/register";
 import { fastify } from "fastify";
 import { InMemoryUserRepository } from "$adapters/repository/inMemory/InMemoryUserRepository";
 import { UserService } from "$core/service/UserService";
