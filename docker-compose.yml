@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+    postgres:
+        image: postgres:16.2
+        container_name: postgres-proyecto
+        environment:
+            - POSTGRES_USER=proyecto
+            - POSTGRES_PASSWORD=proyecto
+        volumes:
+            - postgres-db-volume:/var/lib/postgresql/data
+        ports:
+            - 5432:5432
+        networks:
+            - postgres-db-network
+
+volumes:
+    postgres-db-volume:
+
+networks:
+    postgres-db-network:
+        driver: bridge

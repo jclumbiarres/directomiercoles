@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "baseUrl": ".",
+        "paths": {
+            "$core/*": [
+                "src/core/*"
+            ],
+            "$application/*": [
+                "src/application/*"
+            ],
+            "$adapters/*": [
+                "src/adapters/*"
+            ],
+        },
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es6",
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "dist",
+        "strict": true
+    },
+    "include": [
+        "src/**/*"
+    ],
+}
