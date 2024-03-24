@@ -11,7 +11,6 @@ import { TodoService } from "$core/service/TodoService";
 import { InMemoryTodoRepository } from "$adapters/repository/inMemory/InMemoryTodoRepository";
 import { OrmTodoRepository } from "$adapters/repository/orm/OrmTodoRepository";
 import { TokenService } from "$core/service/TokenService";
-//import "module-alias/register";
 dotenv.config();
 const server = fastify({
   logger: true,
@@ -48,4 +47,3 @@ export const start = async () => {
     process.exit(1);
   }
 };
-//start();
