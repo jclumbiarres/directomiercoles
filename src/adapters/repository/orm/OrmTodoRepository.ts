@@ -10,7 +10,6 @@ export class OrmTodoRepository implements ITodo<Todo> {
       const savedTodo = await this.prisma.todo.create({ data: todo });
       return savedTodo;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
