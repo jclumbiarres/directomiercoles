@@ -12,6 +12,7 @@ import { TodoService } from "$core/service/TodoService";
 import { OrmTodoRepository } from "$adapters/repository/orm/OrmTodoRepository";
 import { TokenService } from "$core/service/Auth/TokenService";
 import dotenv from "dotenv";
+import { InMemoryTodoRepository } from "$adapters/repository/inMemory/InMemoryTodoRepository";
 
 dotenv.config();
 
@@ -32,10 +33,10 @@ const userController = new UserController(userService);
 const authService = new AuthService(userRepository, hPassService, tokenService);
 const loginController = new LoginController(authService);
 
-//const todoRepository = new InMemoryTodoRepository();
-const ormTodo = new OrmTodoRepository();
+const todoRepository = new InMemoryTodoRepository();
+//const ormTodo = new OrmTodoRepository();
 
-const todoService = new TodoService(ormTodo);
+const todoService = new TodoService(todoRepository);
 const todoController = new TodoController(todoService);
 
 userController.registerRoutes(server);
