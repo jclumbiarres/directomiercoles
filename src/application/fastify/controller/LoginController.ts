@@ -1,5 +1,6 @@
 import { FastifyInstance, FastifyRequest } from "fastify";
 import { AuthService } from "$core/service/Auth/AuthService";
+import { InvalidToken } from "$core/error/AuthError";
 
 export class LoginController {
   constructor(private authService: AuthService) {}
@@ -16,7 +17,9 @@ export class LoginController {
           const token = await this.authService.login(email, password);
           reply.code(200).send({ Token: token });
         } catch (err) {
-          reply.code(401).send({ error: err });
+          if (err instanceof InvalidToken) {
+            reply.code(401).send({ error: err.message });
+          }
         }
       }
     );
