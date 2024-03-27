@@ -12,8 +12,9 @@ export class UserController {
       async (request: FastifyRequest<{ Body: User }>, reply: FastifyReply) => {
         const user = request.body;
         try {
-          const newUser = await this.userService.save(user);
-          reply.code(201).send(newUser);
+          const savedUser = await this.userService.save(user);
+          const { password, ...userWithoutPassword } = savedUser as User;
+          reply.code(201).send(userWithoutPassword);
         } catch (err) {
           if (err instanceof UserAlreadyExists) {
             reply.code(409).send({ error: err.message });
